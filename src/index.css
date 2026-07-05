@@ -1,0 +1,190 @@
+/* src/index.css */
+
+/* Reset y variables globales */
+:root {
+  --bg-primary: #0f0f14;
+  --bg-secondary: #1a1a24;
+  --bg-card: #22222e;
+  --accent: #6c63ff;
+  --accent-hover: #8578ff;
+  --text-primary: #f5f5f7;
+  --text-secondary: #a0a0b0;
+  --success: #4caf50;
+  --error: #f44336;
+  --border-radius: 12px;
+  --transition: 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* Contenedor principal */
+.app-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.app-header h1 {
+  font-size: 2rem;
+  background: linear-gradient(90deg, var(--accent), #ff6584);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.app-header p {
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+/* Tarjeta del reproductor */
+.video-card {
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.video-player {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-player video {
+  width: 100%;
+  height: 100%;
+}
+
+/* Información del video */
+.video-info {
+  padding: 1.5rem;
+}
+
+.video-info h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.video-meta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.video-meta p {
+  background-color: var(--bg-secondary);
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+}
+
+/* Selector de formatos */
+.formats-section {
+  padding: 0 1.5rem 1.5rem;
+}
+
+.formats-section h3 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.formats-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.format-btn {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 2px solid transparent;
+  padding: 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+}
+
+.format-btn:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.format-btn.active {
+  border-color: var(--accent);
+  background-color: rgba(108, 99, 255, 0.15);
+}
+
+.format-btn .bitrate {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.format-btn .type {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* Estados de carga y error */
+.status-message {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.1rem;
+}
+
+.status-message.loading {
+  color: var(--accent);
+}
+
+.status-message.error {
+  color: var(--error);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--bg-secondary);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(244, 67, 54, 0.9);
+  padding: 1rem;
+  border-radius: 8px;
+  color: white;
+  text-align: center;
+}
